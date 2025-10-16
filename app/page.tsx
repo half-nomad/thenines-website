@@ -1,7 +1,7 @@
 'use client'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
-import { ArrowRight } from 'lucide-react'
+import { ArrowRight, Map, Globe, Handshake, Sparkles } from 'lucide-react'
 
 export default function HomePage() {
   return (
@@ -100,7 +100,7 @@ export default function HomePage() {
               <div className="aspect-square flex items-center justify-center text-foreground-secondary">
                 {/* Placeholder for visual - can be replaced with actual image */}
                 <div className="text-center">
-                  <div className="text-6xl mb-4">🗺️</div>
+                  <Map className="w-24 h-24 mx-auto mb-4 text-primary/50" />
                   <p className="text-sm">시장 구조 변화 시각화</p>
                   <p className="text-xs mt-2 opacity-50">
                     낡은 지도 vs 새로운 대륙
@@ -143,17 +143,17 @@ export default function HomePage() {
             viewport={{ once: true }}
           >
             <div className="bg-background-secondary p-6 rounded-xl border border-white/10 hover:border-primary/50 transition-all">
-              <div className="text-4xl mb-4">🌏</div>
+              <Globe className="w-12 h-12 mb-4 mx-auto text-primary" />
               <h3 className="font-semibold mb-2">언어 장벽 해소</h3>
               <p className="text-sm text-foreground-secondary">현지인의 언어로 전달</p>
             </div>
             <div className="bg-background-secondary p-6 rounded-xl border border-white/10 hover:border-primary/50 transition-all">
-              <div className="text-4xl mb-4">🤝</div>
+              <Handshake className="w-12 h-12 mb-4 mx-auto text-primary" />
               <h3 className="font-semibold mb-2">문화적 신뢰 구축</h3>
               <p className="text-sm text-foreground-secondary">진정성 있는 경험 공유</p>
             </div>
             <div className="bg-background-secondary p-6 rounded-xl border border-white/10 hover:border-primary/50 transition-all">
-              <div className="text-4xl mb-4">✨</div>
+              <Sparkles className="w-12 h-12 mb-4 mx-auto text-primary" />
               <h3 className="font-semibold mb-2">목적 방문 유도</h3>
               <p className="text-sm text-foreground-secondary">팬으로 전환</p>
             </div>
