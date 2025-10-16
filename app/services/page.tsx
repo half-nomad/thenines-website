@@ -3,11 +3,6 @@ import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { ArrowRight, TrendingUp, TrendingDown, Users, Smartphone, ShoppingBag } from 'lucide-react'
 
-export const metadata = {
-  title: '데이터로 증명하는 신흥국 인바운드 마케팅 솔루션',
-  description: '신흥 6개국 시장 분석 데이터와 컬처 브릿지 전략으로 외국인 관광객을 목적 방문 팬으로 전환합니다.',
-}
-
 export default function ServicesPage() {
   return (
     <main className="pt-20">
