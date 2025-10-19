@@ -1,4 +1,4 @@
-import { allPosts } from 'contentlayer/generated'
+import { getAllPosts } from '@/lib/blog'
 import Link from 'next/link'
 import Image from 'next/image'
 import type { Metadata } from 'next'
@@ -9,9 +9,7 @@ export const metadata: Metadata = {
 }
 
 export default function BlogPage() {
-  const posts = allPosts.sort((a, b) =>
-    new Date(b.date).getTime() - new Date(a.date).getTime()
-  )
+  const posts = getAllPosts()
 
   return (
     <main className="pt-20 min-h-screen">
@@ -40,8 +38,8 @@ export default function BlogPage() {
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {posts.map((post) => (
                 <Link
-                  key={post._id}
-                  href={post.url}
+                  key={post.slug}
+                  href={`/blog/${post.slug}`}
                   className="group"
                 >
                   <article className="bg-background-secondary rounded-2xl overflow-hidden border border-white/10 hover:border-primary/50 transition-all h-full flex flex-col">

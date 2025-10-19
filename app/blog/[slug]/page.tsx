@@ -1,11 +1,17 @@
-import { allPosts } from 'contentlayer/generated'
+import { getAllPostSlugs, getPostBySlug } from '@/lib/blog'
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import type { Metadata } from 'next'
+import { MDXRemote } from 'next-mdx-remote/rsc'
+import remarkGfm from 'remark-gfm'
+import rehypeSlug from 'rehype-slug'
+import rehypeAutolinkHeadings from 'rehype-autolink-headings'
+import rehypeHighlight from 'rehype-highlight'
 
 export async function generateStaticParams() {
-  return allPosts.map((post) => ({
-    slug: post.slug,
+  const slugs = getAllPostSlugs()
+  return slugs.map((slug) => ({
+    slug,
   }))
 }
 
@@ -15,7 +21,7 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>
 }): Promise<Metadata> {
   const { slug } = await params
-  const post = allPosts.find((p) => p.slug === slug)
+  const post = getPostBySlug(slug)
 
   if (!post) {
     return {}
@@ -40,7 +46,7 @@ export default async function BlogPostPage({
   params: Promise<{ slug: string }>
 }) {
   const { slug } = await params
-  const post = allPosts.find((p) => p.slug === slug)
+  const post = getPostBySlug(slug)
 
   if (!post) {
     notFound()
@@ -100,8 +106,21 @@ export default async function BlogPostPage({
               prose-th:border prose-th:border-white/10 prose-th:bg-background-secondary prose-th:p-3 prose-th:text-left
               prose-td:border prose-td:border-white/10 prose-td:p-3
               prose-hr:border-white/10 prose-hr:my-8"
-            dangerouslySetInnerHTML={{ __html: post.body.html }}
-          />
+          >
+            <MDXRemote
+              source={post.content}
+              options={{
+                mdxOptions: {
+                  remarkPlugins: [remarkGfm],
+                  rehypePlugins: [
+                    rehypeSlug,
+                    [rehypeAutolinkHeadings, { behavior: 'wrap' }],
+                    rehypeHighlight,
+                  ],
+                },
+              }}
+            />
+          </div>
 
           {/* CTA Section */}
           <div className="mt-16 p-8 bg-background-secondary border border-white/10 rounded-2xl">
