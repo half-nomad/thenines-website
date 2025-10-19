@@ -53,12 +53,22 @@ export default function HomePage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
+            className="flex flex-col sm:flex-row gap-4 justify-center items-center"
           >
-            <Link
-              href="/services"
+            <a
+              href="https://half-nomad.notion.site/291091314f8f80598f46d7e6b5639666?pvs=105"
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-8 py-4 bg-primary text-white rounded-lg font-semibold text-lg hover:bg-primary/90 transition-all hover:gap-3"
             >
-              The Nines 솔루션 확인하기
+              뉴스레터 구독하기
+              <ArrowRight className="w-5 h-5" />
+            </a>
+            <Link
+              href="/services"
+              className="inline-flex items-center gap-2 px-8 py-4 bg-background-secondary text-white border border-white/10 rounded-lg font-semibold text-lg hover:border-primary/50 transition-all hover:gap-3"
+            >
+              솔루션 자세히 보기
               <ArrowRight className="w-5 h-5" />
             </Link>
           </motion.div>
@@ -171,19 +181,22 @@ export default function HomePage() {
             viewport={{ once: true }}
           >
             <h2 className="text-3xl md:text-5xl font-bold mb-6 leading-tight">
-              데이터로 증명되는 시장의 변화,<br />
-              더 자세히 보시겠습니까?
+              신흥 시장 인사이트,<br />
+              매주 받아보세요
             </h2>
             <p className="text-lg text-foreground-secondary mb-8 max-w-2xl mx-auto">
-              신흥 6개국 시장 분석과 The Nines의 컬처 브릿지 전략을 확인해보세요.
+              데이터로 증명되는 시장 변화와 실전 마케팅 전략을<br />
+              뉴스레터로 전달합니다.
             </p>
-            <Link
-              href="/services"
+            <a
+              href="https://half-nomad.notion.site/291091314f8f80598f46d7e6b5639666?pvs=105"
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-8 py-4 bg-primary text-white rounded-lg font-semibold text-lg hover:bg-primary/90 transition-all hover:gap-3"
             >
-              The Nines 솔루션 확인하기
+              뉴스레터 구독하기
               <ArrowRight className="w-5 h-5" />
-            </Link>
+            </a>
           </motion.div>
         </div>
       </section>

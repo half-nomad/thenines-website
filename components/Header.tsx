@@ -8,11 +8,11 @@ export default function Header() {
   const [isOpen, setIsOpen] = useState(false)
 
   const navItems = [
-    { name: '홈', href: '/' },
-    { name: '솔루션', href: '/services' },
-    { name: '크리에이터', href: '/creators' },
-    { name: '인사이트', href: '/blog' },
-    { name: '문의하기', href: '/contact' },
+    { name: '홈', href: '/', isExternal: false },
+    { name: '솔루션', href: '/services', isExternal: false },
+    { name: '크리에이터', href: '/creators', isExternal: false },
+    { name: '인사이트', href: '/blog', isExternal: false },
+    { name: '문의하기', href: 'https://half-nomad.notion.site/291091314f8f81408e81dd20b9c5f3cb?pvs=105', isExternal: true },
   ]
 
   return (
@@ -25,21 +25,27 @@ export default function Header() {
 
         {/* 데스크톱 메뉴 */}
         <div className="hidden md:flex items-center gap-8">
-          {navItems.map((item) => (
-            <Link
-              key={item.name}
-              href={item.href}
-              className="text-foreground hover:text-primary transition-colors"
-            >
-              {item.name}
-            </Link>
-          ))}
-          <Link
-            href="/contact"
-            className="px-6 py-2 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors"
-          >
-            무료 진단 받기
-          </Link>
+          {navItems.map((item) =>
+            item.isExternal ? (
+              <a
+                key={item.name}
+                href={item.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-foreground hover:text-primary transition-colors"
+              >
+                {item.name}
+              </a>
+            ) : (
+              <Link
+                key={item.name}
+                href={item.href}
+                className="text-foreground hover:text-primary transition-colors"
+              >
+                {item.name}
+              </Link>
+            )
+          )}
         </div>
 
         {/* 모바일 메뉴 버튼 */}
@@ -55,25 +61,29 @@ export default function Header() {
       {/* 모바일 메뉴 */}
       {isOpen && (
         <div className="md:hidden bg-background-secondary border-b border-white/10">
-          {navItems.map((item) => (
-            <Link
-              key={item.name}
-              href={item.href}
-              className="block px-4 py-3 text-foreground hover:bg-white/5 transition-colors"
-              onClick={() => setIsOpen(false)}
-            >
-              {item.name}
-            </Link>
-          ))}
-          <div className="p-4">
-            <Link
-              href="/contact"
-              className="block w-full text-center px-6 py-3 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors"
-              onClick={() => setIsOpen(false)}
-            >
-              무료 진단 받기
-            </Link>
-          </div>
+          {navItems.map((item) =>
+            item.isExternal ? (
+              <a
+                key={item.name}
+                href={item.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block px-4 py-3 text-foreground hover:bg-white/5 transition-colors"
+                onClick={() => setIsOpen(false)}
+              >
+                {item.name}
+              </a>
+            ) : (
+              <Link
+                key={item.name}
+                href={item.href}
+                className="block px-4 py-3 text-foreground hover:bg-white/5 transition-colors"
+                onClick={() => setIsOpen(false)}
+              >
+                {item.name}
+              </Link>
+            )
+          )}
         </div>
       )}
     </header>
