@@ -45,10 +45,18 @@ export default function BlogPage() {
                   <article className="bg-background-secondary rounded-2xl overflow-hidden border border-white/10 hover:border-primary/50 transition-all h-full flex flex-col">
                     {/* Thumbnail */}
                     <div className="relative h-48 bg-gradient-to-br from-primary/20 to-accent-purple/20">
-                      {/* Placeholder gradient for now */}
-                      <div className="absolute inset-0 flex items-center justify-center">
-                        <div className="text-6xl opacity-20">📊</div>
-                      </div>
+                      {post.image ? (
+                        <Image
+                          src={post.image}
+                          alt={post.title}
+                          fill
+                          className="object-cover"
+                        />
+                      ) : (
+                        <div className="absolute inset-0 flex items-center justify-center">
+                          <div className="text-6xl opacity-20">📊</div>
+                        </div>
+                      )}
                     </div>
 
                     {/* Content */}
