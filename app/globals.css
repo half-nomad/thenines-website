@@ -64,3 +64,188 @@ body {
   outline: 2px solid var(--primary);
   outline-offset: 2px;
 }
+
+/* ========================================
+   MARKDOWN CONTENT STYLES (블로그 템플릿)
+   ======================================== */
+
+.markdown-content {
+  color: var(--foreground-secondary);
+  line-height: 1.8;
+}
+
+/* 제목 스타일 */
+.markdown-content h2 {
+  font-size: 2rem;
+  font-weight: bold;
+  color: var(--foreground);
+  margin-top: 3rem;
+  margin-bottom: 1.5rem;
+  line-height: 1.3;
+}
+
+.markdown-content h3 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--foreground);
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  line-height: 1.4;
+}
+
+.markdown-content h4 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--foreground);
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+}
+
+/* 문단 */
+.markdown-content p {
+  margin-bottom: 1.5rem;
+  color: var(--foreground-secondary);
+}
+
+/* 링크 */
+.markdown-content a {
+  color: var(--primary);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.markdown-content a:hover {
+  color: var(--accent-purple);
+}
+
+/* 강조 */
+.markdown-content strong {
+  color: var(--foreground);
+  font-weight: 600;
+}
+
+.markdown-content em {
+  font-style: italic;
+  color: var(--foreground-secondary);
+}
+
+/* 목록 */
+.markdown-content ul,
+.markdown-content ol {
+  margin: 1.5rem 0;
+  padding-left: 1.5rem;
+}
+
+.markdown-content ul {
+  list-style-type: disc;
+}
+
+.markdown-content ol {
+  list-style-type: decimal;
+}
+
+.markdown-content li {
+  margin: 0.5rem 0;
+  color: var(--foreground-secondary);
+}
+
+.markdown-content li::marker {
+  color: var(--primary);
+}
+
+/* 인용구 */
+.markdown-content blockquote {
+  border-left: 4px solid var(--primary);
+  padding-left: 1.5rem;
+  margin: 2rem 0;
+  font-style: italic;
+  color: var(--foreground-secondary);
+}
+
+/* 코드 (인라인) */
+.markdown-content code {
+  background-color: var(--background-secondary);
+  color: var(--primary);
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.9em;
+  font-family: 'Courier New', monospace;
+}
+
+/* 코드 블록 */
+.markdown-content pre {
+  background-color: var(--background-secondary);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin: 2rem 0;
+  overflow-x: auto;
+}
+
+.markdown-content pre code {
+  background-color: transparent;
+  padding: 0;
+  border-radius: 0;
+  color: var(--foreground);
+}
+
+/* 테이블 */
+.markdown-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 2rem 0;
+  font-size: 0.95rem;
+}
+
+.markdown-content thead {
+  background-color: var(--background-secondary);
+}
+
+.markdown-content th {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 0.75rem 1rem;
+  text-align: left;
+  font-weight: 600;
+  color: var(--foreground);
+}
+
+.markdown-content td {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 0.75rem 1rem;
+  color: var(--foreground-secondary);
+}
+
+.markdown-content tbody tr:hover {
+  background-color: rgba(255, 255, 255, 0.02);
+}
+
+/* 구분선 */
+.markdown-content hr {
+  border: none;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  margin: 3rem 0;
+}
+
+/* 이미지 기본 스타일 */
+.markdown-content img {
+  width: 100%;
+  max-width: 800px;
+  height: auto;
+  border-radius: 12px;
+  margin: 2rem auto;
+  display: block;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* 이미지 캡션 (alt 텍스트 아래 표시) */
+.markdown-content figure {
+  margin: 2rem 0;
+}
+
+.markdown-content figcaption {
+  text-align: center;
+  font-size: 0.875rem;
+  color: var(--foreground-secondary);
+  margin-top: 0.5rem;
+  font-style: italic;
+}

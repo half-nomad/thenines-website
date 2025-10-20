@@ -7,6 +7,7 @@ import remarkGfm from 'remark-gfm'
 import rehypeSlug from 'rehype-slug'
 import rehypeAutolinkHeadings from 'rehype-autolink-headings'
 import rehypeHighlight from 'rehype-highlight'
+import BlogImage from '@/components/BlogImage'
 
 export async function generateStaticParams() {
   const slugs = getAllPostSlugs()
@@ -88,27 +89,12 @@ export default async function BlogPostPage({
           </header>
 
           {/* Content */}
-          <div
-            className="prose prose-invert prose-lg max-w-none
-              prose-headings:font-bold
-              prose-h2:text-3xl prose-h2:mt-12 prose-h2:mb-6
-              prose-h3:text-2xl prose-h3:mt-8 prose-h3:mb-4
-              prose-p:text-foreground-secondary prose-p:leading-relaxed prose-p:mb-6
-              prose-a:text-primary prose-a:no-underline hover:prose-a:text-primary/80
-              prose-strong:text-white prose-strong:font-semibold
-              prose-ul:my-6 prose-ul:list-disc prose-ul:pl-6
-              prose-ol:my-6 prose-ol:list-decimal prose-ol:pl-6
-              prose-li:text-foreground-secondary prose-li:my-2
-              prose-blockquote:border-l-4 prose-blockquote:border-primary prose-blockquote:pl-6 prose-blockquote:italic prose-blockquote:text-foreground-secondary
-              prose-code:text-primary prose-code:bg-background-secondary prose-code:px-2 prose-code:py-1 prose-code:rounded
-              prose-pre:bg-background-secondary prose-pre:border prose-pre:border-white/10 prose-pre:rounded-lg
-              prose-table:border-collapse prose-table:w-full
-              prose-th:border prose-th:border-white/10 prose-th:bg-background-secondary prose-th:p-3 prose-th:text-left
-              prose-td:border prose-td:border-white/10 prose-td:p-3
-              prose-hr:border-white/10 prose-hr:my-8"
-          >
+          <div className="markdown-content">
             <MDXRemote
               source={post.content}
+              components={{
+                img: BlogImage,
+              }}
               options={{
                 mdxOptions: {
                   remarkPlugins: [remarkGfm],
